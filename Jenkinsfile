@@ -9,14 +9,16 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo "🔍 拉取最新代码..."
-                checkout([
-                    $class: 'GitSCM',
-                    branches: [[name: '*master']],
-                    userRemoteConfigs: [[
-                        url: 'https://github.com/huanmood/mactest.git',
-                        credentialsId: 'first_github_token'
-                    ]]
-                ])
+               checkout([
+    $class: 'GitSCM',
+    branches: [[name: '*/main']],
+    userRemoteConfigs: [[
+        url: 'https://github.com/huanmood/mactest.git',
+        credentialsId: 'github_token'
+    ]],
+    gitTool: 'MacGit'  // 对应 Global Tool Configuration 里配置的 Name
+])
+
             }
         }
 
