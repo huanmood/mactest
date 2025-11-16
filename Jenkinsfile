@@ -10,7 +10,7 @@ pipeline {
             steps {
                 checkout([
                     $class: 'GitSCM',
-                    branches: [[name: '*/main']],
+                    branches: [[name: '*/master']],
                     userRemoteConfigs: [[url: 'https://github.com/huanmood/mactest.git']],
                     gitTool: 'MacGit'  // ✅ 在这里指定你刚刚配置的 Git 工具名
                 ])
